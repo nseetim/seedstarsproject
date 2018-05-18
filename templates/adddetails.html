@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Details</title>
+</head>
+<body>
+<form action="{% url 'HRapp:adddetails' %}" method="post">{% csrf_token %}
+    <p><label for="username">Username:</label><input type="text" name="username" value="Username here"/></p>
+    <p><label for="emailaddress">Email Address:</label><input type="text" name="emailaddress" value="email address here"/></p>
+    <input type="submit" value="Submit" />
+</form>
+<div>
+    <h4>
+        You can go back to the <a href="{% url 'HRapp:home' %}">home</a> page here
+    </h4>
+    <h4>
+        You can go back to the <a href="{% url 'HRapp:list' %}">Lists</a> page here
+    </h4>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lists</title>
+</head>
+<body>
+<h1>This is where you see all the stuff you stored in the Database</h1>
+<ul>
+    {% for content in contents %}
+        <h3>
+            {{ content.username }}
+            <p>
+                {{ content.emailaddress }}
+            </p>
+        </h3>
+    {% endfor %}
+</ul>
+<div>
+    <h4>
+        You can go back to the <a href="{% url 'HRapp:home' %}">home</a> page here
+    </h4>
+    <h4>
+        You can go back to the <a href="{% url 'HRapp:adddetails' %}">Add Content</a> page here
+    </h4>
+</div>
+</body>
+</html>
