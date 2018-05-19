@@ -1,0 +1,19 @@
+1.  After Downloading or pulling the repo install the requirements
+    from the requirements file,
+2.  Setup Postgresql on your local machine for linux Debian based OS
+    apt-get install psql should do it, windows users could google it
+3.  Start the DBMS with the default created user "postgres" for linux
+    Debian based OS users sudo -u postgres psql should do it
+4.  create your database and take note of the password and the user and change
+    these entries in the settings.py file to match yours or you could
+    just change the Database engine and use the sqlite db to avoid the stress
+    for the sqlite the setting will should be like this
+
+                        DATABASES = {
+                'default': {
+                    'ENGINE': 'django.db.backends.sqlite3',
+                    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+                }
+            }
+
+5.  Final note: It would be nice to work with a virtual env, its helps alot
