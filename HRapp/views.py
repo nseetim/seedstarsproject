@@ -1,13 +1,18 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 
 from HRapp.forms import *
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import AddDetailsSerializer
 
 # Create your views here.
 
@@ -47,4 +52,11 @@ def listcontent(request):
     contents = AddDetails.objects.all()
     return render(request, 'lists.html', {'form': form, 'contents': contents})
 
+
+class Details(APIView):
+
+    def get(self, request):
+        users = AddDetails.objects.all()
+        serializer = AddDetailsSerializer(users, many=True)
+        return Response(serializer.data)
 
